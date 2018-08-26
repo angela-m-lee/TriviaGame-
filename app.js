@@ -1,5 +1,5 @@
 $("#startButton").on("click", function () {
-   points.start();
+    points.start();
 })
 
 var questions = [{
@@ -47,24 +47,96 @@ var questions = [{
 var points = {
     correct: 0,
     incorrect: 0,
-    time: 130,
-    countdown: function(){
+    time: 20,
+    countdown: function () {
         points.time--;
         $("#time").html(points.time);
-        if(points.time === 0){
+        if (points.time === 0) {
             console.log("Time's Up!");
             points.done();
         }
     },
-    start: function(){
-        timer = setInterval(points.countdown,1000);
-        $("#subwrapper").prepend('<h2> Time Left: <span id = "time"> 130 </span> seconds</h2>')
+    start: function () {
+        timer = setInterval(points.countdown, 1000);
+        $("#subwrapper").prepend('<h2> Time Left: <span id = "time"> 100 </span> seconds</h2>')
         $("#startButton").remove();
-        for (var i = 0; i < questions.length; i++){
+        for (var i = 0; i < questions.length; i++) {
             $("#subwrapper").append("<h2>" + questions[i].question + "</h2>")
-            for (var j = 0; j < questions[i].answerOptions.length; j++){
-                $("#subwrapper").append("<input type = 'radio' name = 'question'-" + i + "' value = '" + questions[i].answerOptions[j] + "'>" + questions[i].answerOptions[j])
+            for (var j = 0; j < questions[i].answerOptions.length; j++) {
+                $("#subwrapper").append("<input type = 'radio' name = 'questions-" + i + "' value = '" + questions[i].answerOptions[j] + "'>" + questions[i].answerOptions[j])
             }
         }
-    }
+    },
+    done: function () {
+        $.each($("input[name='questions-0']:checked"), function() {
+            if ($(this).val()==questions[0].correctAnswer) {
+                points.correct++;
+            } else {
+                points.incorrect++;
+            }
+        }); $.each($("input[name='questions-1']:checked"), function() {
+            if ($(this).val()==questions[1].correctAnswer) {
+                points.correct++;
+            } else {
+                points.incorrect++;
+            }
+        }); $.each($("input[name='questions-2']:checked"), function() {
+            if ($(this).val()==questions[2].correctAnswer) {
+                points.correct++;
+            } else {
+                points.incorrect++;
+            }
+        }); $.each($("input[name='questions-3']:checked"), function() {
+            if ($(this).val()==questions[3].correctAnswer) {
+                points.correct++;
+            } else {
+                points.incorrect++;
+            }
+        }); $.each($("input[name='questions-4']:checked"), function() {
+            if ($(this).val()==questions[4].correctAnswer) {
+                points.correct++;
+            } else {
+                points.incorrect++;
+            }
+        }); $.each($("input[name='questions-5']:checked"), function() {
+            if ($(this).val()==questions[5].correctAnswer) {
+                points.correct++;
+            } else {
+                points.incorrect++;
+            }
+        }); $.each($("input[name='questions-6']:checked"), function() {
+            if ($(this).val()==questions[6].correctAnswer) {
+                points.correct++;
+            } else {
+                points.incorrect++;
+            }
+        }); $.each($("input[name='questions-7']:checked"), function() {
+            if ($(this).val()==questions[7].correctAnswer) {
+                points.correct++;
+            } else {
+                points.incorrect++;
+            }
+        }); $.each($("input[name='questions-8']:checked"), function() {
+            if ($(this).val()==questions[8].correctAnswer) {
+                points.correct++;
+            } else {
+                points.incorrect++;
+            }
+        }); $.each($("input[name='questions-9']:checked"), function() {
+            if ($(this).val()==questions[9].correctAnswer) {
+                points.correct++;
+            } else {
+                points.incorrect++;
+            }
+        });
+        this.result();
+    },
+        result: function(){
+            clearInterval(timer);
+            $("#subwrapper h2").remove();
+            $("#subwrapper").html("<h2>Finished!</h2>");
+            $("#subwrapper").append("<h3>Correct Answers: "+this.correct+"</h3>");
+            $("#subwrapper").append("<h3>Incorrect Answers: "+this.incorrect+"</h3>");
+            $("#subwrapper").append("<h3> No Answer: "+(questions.length-(this.incorrect+this.correct))+"</h3>");
+        }
 }
