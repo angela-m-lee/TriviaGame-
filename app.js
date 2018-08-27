@@ -2,6 +2,7 @@ $("#startButton").on("click", function () {
     points.start();
 })
 
+
 var questions = [{
     question: "What is the name off the famous local theater?",
     answerOptions: ["The Fox Theater", "The Loft", "The Gallagher Theater", "The Screening Room"],
@@ -47,7 +48,7 @@ var questions = [{
 var points = {
     correct: 0,
     incorrect: 0,
-    time: 20,
+    time: 100,
     countdown: function () {
         points.time--;
         $("#time").html(points.time);

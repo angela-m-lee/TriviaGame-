@@ -1,0 +1,18 @@
+body{
+    /*I was trying to lower the background's opacity but I couldn't find the right line of code. I'm sorry if it's difficult to see!*/ 
+    background-image: url("https://cdn.shopify.com/s/files/1/1102/6652/products/tall-saguaro-1486l_1024x1024.gif?v=1504985130");
+    background-repeat: repeat;
+    background-attachment: fixed;
+    text-decoration: none;
+}
+#header{
+    color: green;
+    text-align: center;
+    text-decoration: none;
+}
+ #subwrapper{
+     text-decoration: none;
+     color: green;
+     text-align: center;
+     text-decoration: none;
+ }
